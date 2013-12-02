@@ -1,0 +1,27 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-size: 32px;
+    text-align: center;
+}
+html {
+    height: 100%;
+}
+a {
+    display: block;
+    width: 100%;
+    height: 45%;
+    text-decoration: none;
+    background: #9CC5D3;
+    color:#4768D6;
+}   
+a:nth-child(even) {
+    background: #FBBEBD;
+    color:#B22D47;
+}
+a#back {
+    height: 10%;
+    background: #fff;
+    color: #666;
+}

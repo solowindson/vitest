@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>vi-button</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta charset="utf8"/>
+    <style type="text/css">
+    body {
+        padding:0;
+        margin: 0;
+        text-align: center;
+    }
+    h1 {
+
+    }
+    button {
+        font-size: 24px;
+        display: block;
+        border: none;
+        background: #B1D3EC;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 15px 0;
+        border-bottom: 10px solid #6CAAD9;
+        width: 100%;
+    }
+    </style>
+
+    <script type="text/javascript">
+    // Simple JavaScript Templating
+    // John Resig - http://ejohn.org/ - MIT Licensed
+    (function(){
+      var cache = {};
+     
+      this.tmpl = function tmpl(str, data){
+        // Figure out if we're getting a template, or if we need to
+        // load the template - and be sure to cache the result.
+        var fn = !/\W/.test(str) ?
+          cache[str] = cache[str] ||
+            tmpl(document.getElementById(str).innerHTML) :
+         
+          // Generate a reusable function that will serve as a template
+          // generator (and which will be cached).
+          new Function("obj",
+            "var p=[],print=function(){p.push.apply(p,arguments);};" +
+           
+            // Introduce the data as local variables using with(){}
+            "with(obj){p.push('" +
+           
+            // Convert the template into pure JavaScript
+            str
+              .replace(/[\r\t\n]/g, " ")
+              .split("<%").join("\t")
+              .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+              .replace(/\t=(.*?)%>/g, "',$1,'")
+              .split("\t").join("');")
+              .split("%>").join("p.push('")
+              .split("\r").join("\\'")
+          + "');}return p.join('');");
+       
+        // Provide some basic currying to the user
+        return data ? fn( data ) : fn;
+      };
+    })();
+    </script>
+    <script type="text/javascript">
+    var pages = {
+        "home": {
+            "title": "Open Canteen",
+            "btns": [
+                {
+                    "btn":"food bookmark", 
+                    "link": "bookmark"
+                },
+                {
+                    "btn":"explore food", 
+                    "link": "explore"
+                }
+            ]
+        },
+        "bookmark": {
+            "title": "food bookmark",
+            "btns": [
+                {
+                    "btn": "home page",
+                    "link": "home"
+                },
+                {
+                    "btn":"go back", 
+                    "link": "home"
+                },
+                {
+                    "btn":"chicken rice 20hk$", 
+                    "link": "handle_in_bm"
+                },
+                {
+                    "btn":"charsiu rice 19hk$", 
+                    "link": "handle_in_bm"
+                },
+                {
+                    "btn":"chicken noodle 23hk$", 
+                    "link": "handle_in_bm"
+                }
+            ]
+        },
+        "handle_in_bm": {
+            "title": "operation",
+            "btns": [
+                {
+                    "btn": "home page",
+                    "link": "home"
+                },
+                {
+                    "btn":"go back", 
+                    "link": "bookmark"
+                },
+                {
+                    "btn":"order it", 
+                    "link": "selt_canteen"
+                },
+                {
+                    "btn":"remove it from canteen", 
+                    "link": ""
+                }
+            ]
+        },
+        "selt_canteen": {
+            "title": "select canteen",
+            "btns": [
+                {
+                    "btn": "home page",
+                    "link": "home"
+                },
+                {
+                    "btn":"go back", 
+                    "link": "handle_in_bm"
+                },
+                {
+                    "btn":"canteen 1. 50 meter away", 
+                    "link": "end"
+                },
+
+                {
+                    "btn":"canteen 2. 140 meter away", 
+                    "link": "end"
+                }
+            ]
+        },
+        "end": {
+            "title": "your order is finished",
+            "btns": [
+                {
+                    "btn":"go back to home page", 
+                    "link": "home"
+                }
+            ]
+        },
+        "explore": {
+            "title": "explore food",
+            "btns": [
+                {
+                    "btn": "home page",
+                    "link": "home"
+                },
+                {
+                    "btn": "go back",
+                    "link": "home"
+                },
+                {
+                    "btn":"rice", 
+                    "link": "ep_rice"
+                },
+                {
+                    "btn":"noodle", 
+                    "link": "ep_noodle"
+                }
+            ]
+        },
+        "ep_rice": {
+            "title": "explore rice",
+            "btns": [
+                {
+                    "btn": "home page",
+                    "link": "home"
+                },
+                {
+                    "btn": "go back",
+                    "link": "explore"
+                },
+                {
+                    "btn":"chicken rice", 
+                    "link": "op_in_ep_r"
+                },
+                {
+                    "btn":"beef rice", 
+                    "link": "op_in_ep_r"
+                },
+                {
+                    "btn":"charsiu rice", 
+                    "link": "op_in_ep_r"
+                }
+            ]
+        },
+        "op_in_ep_r": {
+            "title": "operation",
+            "btns": [
+                {
+                    "btn": "home page",
+                    "link": "home"
+                },
+                {
+                    "btn": "go back",
+                    "link": "ep_rice_r"
+                },
+                {
+                    "btn": "order it",
+                    "link": "selt_canteen"
+                },
+                {
+                    "btn": "add it to bookmark",
+                    "link": ""
+                }
+            ]
+        },
+        "ep_noodle": {
+            "title": "explore noodle",
+            "btns": [
+                {  
+                    "btn": "home page",
+                    "link": "home"
+                },
+                {
+                    "btn": "go back",
+                    "link": "explore"
+                },
+                {
+                    "btn":"chicken noodle", 
+                    "link": "op_in_ep_r"
+                },
+                {
+                    "btn":"beef noodle", 
+                    "link": "op_in_ep_r"
+                },
+                {
+                    "btn":"charsiu noodle", 
+                    "link": "op_in_ep_r"
+                }
+            ]
+        },
+        "op_in_ep_r": {
+            "title": "operation",
+            "btns": [
+                {
+                    "btn": "home page",
+                    "link": "home"
+                },
+                {
+                    "btn": "go back",
+                    "link": "ep_noodle_r"
+                },
+                {
+                    "btn": "order it",
+                    "link": "selt_canteen"
+                },
+                {
+                    "btn": "add it to bookmark",
+                    "link": ""
+                }
+            ]
+        },
+
+
+    };
+    var page;
+    window.onload = function() {
+        page = document.getElementById('page');
+        goto("home")
+    }
+    function goto(link) {
+        if (link == "") return;
+        page.innerHTML = tmpl("tmpl", pages[link]);
+    }
+    </script>
+</head>
+<body>
+<script type="text/html" id="tmpl">
+    <h1 title="<%=title%>"><%=title%></h1>
+    <% for (var i = 0; i < btns.length; i ++) { %>
+        <button onclick="goto('<%= btns[i].link %>')"><%= btns[i].btn %></button>
+    <% } %>
+</script>
+<div id="page"></div>
+</body>
+</html>
